@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100i,400&display=swap');
+
+$color-1: #DDD8B8;
+$color-2: #ff8a5c;
+$color-3: #f5587b;
+$color-4: #e41749;
+$color-5: #b206b0;
+
+$color: $color-1,
+$color-2,
+$color-3,
+$color-4,
+$color-5;
+
+@mixin anim($i) {
+    $y: ($i + 5) * 10;
+
+    @keyframes right-#{$i} {
+        0% {
+            transform: translateY(#{-$y}px);
+        }
+
+        100% {
+            transform: translateY(#{$y}px);
+        }
+    }
+}
+
+body {
+    background-color: #000;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    color: $color-5;
+    margin-bottom: 0;
+}
+
+h3 {
+    color: $color-2;
+
+}
+
+section {
+    margin-bottom: 35px;
+}
+
+.loadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+ul {
+    display: flex;
+
+    li {
+        width: 20px;
+        height: 20px;
+        margin: 10px;
+        list-style-type: none;
+        transition: 0.5s all ease;
+    }
+
+    @for $i from 1 through 5 {
+        li:nth-child(#{$i}) {
+            @include anim($i);
+            animation: right-#{$i} 1s infinite alternate;
+            background-color: nth($color, $i);
+            animation-delay: 100ms * $i;
+        }
+    }
+}
+
+
+header {
+    text-align: center;
+}
+
+.boxWarpper {
+    width: 350px;
+    height: auto;
+    margin: 10px;
+
+    img {
+        width: 100%;
+        height: 200px;
+        opacity: 0.8;
+
+    }
+
+    &:hover {
+        background-color: #1f1f1f;
+
+        img {
+            opacity: 1;
+        }
+    }
+
+
+    a {
+        text-decoration: none;
+        color: #fff;
+
+    }
+
+}
+
+
+
+
+
+.mainContent {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    p {
+        margin: 10px 5px;
+    }
+}
+
+.mainTitle {
+    margin: 2px 5px;
+}
+
+
+
+form {
+    text-align: center;
+
+}
+
+
+
+input[type=text] {
+    width: 60%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+
+
+}
+
+button {
+    width: 30%;
+    padding: 14px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 2px;
+    box-sizing: border-box;
+    appearance: none;
+    background-color: $color-5;
+    border: 2px solid $color-5;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bolder;
+    letter-spacing: 3px;
+    transition: box-shadow 300ms ease-in-out,
+        color 300ms ease-in-out;
+
+    &:hover,
+    &:focus {
+        box-shadow: 0 0 40px 40px $color-4 inset;
+        outline: 0;
+    }
+}
+
+.articleSource {
+    font-size: 14px;
+    font-weight: bold;
+    color: $color-5;
+
+
+    span {
+        color: $color-4;
+        font-size: 13px;
+
+    }
+}
+
+footer {
+    background-color: $color-5;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+
+    p {
+        margin: 5px 0 0 0;
+        padding: 3px 0;
+    }
+}
+
+@media only screen and (max-width: 740px) {
+
+    .boxWarpper {
+        width: 80%;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+}
+
+@media only screen and (max-width: 360px) {
+
+    .boxWarpper {
+        width: 100%;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    button {
+        width: 95%;
+        margin: 0;
+    }
+
+    input[type=text] {
+        width: 95%;
+
+    }
+
+    header h3 {
+        margin: 0 10px;
+        white-space: nowrap;
+        font-size: 16px;
+    }
+
+}

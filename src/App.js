@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import Header from './components/Header.js'
+import SearchBar from './components/SearchBar.js'
+import NewsList from './components/NewsList.js'
+import Footer from './components/Footer.js'
+import 'normalize.css';
+import './App.css'
+import './styles/styles.scss';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+    }
+  }
+  // used to pass props from SearchBar to NewsList
+  onSubmittedSearch = (inputValue) => {
+    console.log(inputValue)
+    this.setState({
+      inputValue: inputValue
+    })
+  }
+
+  render() {
+    return (
+      <main>
+        <Header
+          title='Gif The News'
+          subHeading='See The Gifs That Match The News'
+        />
+
+        <SearchBar onSubmittedSearch={this.onSubmittedSearch} />
+
+        <NewsList inputValue={this.state.inputValue} />
+
+        <Footer />
+
+
+      </main>
+    )
+  }
 }
 
 export default App;
