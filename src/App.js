@@ -3,7 +3,8 @@ import Header from './components/Header.js'
 import SearchBar from './components/SearchBar.js'
 import NewsList from './components/NewsList.js'
 import Footer from './components/Footer.js'
-import 'normalize.css';
+import Pages from './components/Pages.js'
+import 'normalize.css'
 import './App.css'
 import './styles/styles.scss';
 
@@ -11,6 +12,9 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      inputValue: null,
+      pageNum: null
+
     }
   }
   // used to pass props from SearchBar to NewsList
@@ -20,6 +24,10 @@ class App extends Component {
       inputValue: inputValue
     })
   }
+  onNextButtonClick = (pageNum) => {
+    console.log('hey')
+  }
+
 
   render() {
     return (
@@ -30,9 +38,12 @@ class App extends Component {
         />
 
         <SearchBar onSubmittedSearch={this.onSubmittedSearch} />
+        
 
         <NewsList inputValue={this.state.inputValue} />
 
+
+        <Pages onNextButtonClick={this.state.onNextButtonClick} />
         <Footer />
 
 
