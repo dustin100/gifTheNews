@@ -69,7 +69,7 @@ class NewsList extends Component {
 
                 }
             })
-            const gifData = await axios.get('https://api.giphy.com/v1/gifs/search', {
+            const gifData = await axios.get('http://api.giphy.com/v1/gifs/search', {
                 params: {
                     api_key: 'fqGHJALbZ8kmKJ6L76bs9FJmTV6GxJ8t',
                     limit: 18,
