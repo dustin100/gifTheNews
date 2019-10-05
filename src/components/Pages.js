@@ -5,24 +5,27 @@ class Pages extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            nextPage: null,
-            prevPage: null
+            nextPage: 0
         }
-    }
 
+    }
+    handleClick = (num) => {
+        return this.setState({
+            nextPage: num++
+        })
+    }
 
     render() {
         return (
             <div className='pageNav'>
 
-                <button type="submit" className="prevButton" onClick={() => this.something('pass something')}>Prev</button>
 
-
-                <button type="submit" className="nextButton" onClick={() => this.something('pass page number')}>Next </button>
+                <button className="nextButton" onClick={() => this.handleClick}>Next </button>
 
             </div>
         )
     }
+
 }
 
 export default Pages
