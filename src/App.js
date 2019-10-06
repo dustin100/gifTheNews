@@ -13,19 +13,21 @@ class App extends Component {
     super(props)
     this.state = {
       inputValue: null,
-      pageNum: null
+      pageNum: 1
 
     }
   }
   // used to pass props from SearchBar to NewsList
   onSubmittedSearch = (inputValue) => {
-    console.log(inputValue)
     this.setState({
       inputValue: inputValue
     })
   }
   onNextButtonClick = (pageNum) => {
-    console.log('hey')
+
+    this.setState({
+      pageNum: pageNum
+    })
   }
 
 
@@ -38,12 +40,12 @@ class App extends Component {
         />
 
         <SearchBar onSubmittedSearch={this.onSubmittedSearch} />
-        
-
-        <NewsList inputValue={this.state.inputValue} />
 
 
-        <Pages onNextButtonClick={this.state.onNextButtonClick} />
+        <NewsList inputValue={this.state.inputValue} pageNum={this.state.pageNum} />
+
+
+        <Pages onNextButtonClick={this.onNextButtonClick} />
         <Footer />
 
 

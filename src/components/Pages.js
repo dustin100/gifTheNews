@@ -9,7 +9,7 @@ class Pages extends Component {
         }
 
     }
-    handleClick = (num) => {
+    handleClick = () => {
         this.setState({
             nextPage: this.state.nextPage + 1
         })
@@ -21,10 +21,10 @@ class Pages extends Component {
 
 
                 <button className="nextButton" onClick={() => {
-                    return this.handleClick(2)
-                }}>Next </button>
+                    this.handleClick(1)
+                    this.props.onNextButtonClick(this.state.nextPage)}}>Next </button>
 
-            </div >
+            </div>
         )
     }
 

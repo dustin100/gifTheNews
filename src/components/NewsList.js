@@ -65,7 +65,8 @@ class NewsList extends Component {
                     sortBy: 'relevancy',
                     pageSize: 18,
                     language: 'en',
-                    q: this.props.inputValue ? this.props.inputValue : 'breaking news'
+                    q: this.props.inputValue ? this.props.inputValue : 'breaking news',
+                    page: this.props.pageNum
 
                 }
             })
@@ -95,14 +96,15 @@ class NewsList extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.inputValue !== prevProps.inputValue) {
+        if (this.props.inputValue !== prevProps.inputValue || this.props.pageNum !== prevProps.pageNum) {
             this.setState({
                 news: [],
                 gifs: []
             }, this.fetchNews);
         }
-    }
+        console.log(this.props.pageNum)
 
+    }
     render() {
         return (
             <section>
