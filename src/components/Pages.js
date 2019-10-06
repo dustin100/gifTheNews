@@ -5,7 +5,7 @@ class Pages extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            nextPage: 1
+            nextPage: 0
         }
 
     }
@@ -22,7 +22,8 @@ class Pages extends Component {
 
                 <button className="nextButton" onClick={() => {
                     this.handleClick(1)
-                    this.props.onNextButtonClick(this.state.nextPage)}}>Next </button>
+                    this.props.onNextButtonClick(this.state.nextPage)
+                }}>Next </button>
 
             </div>
         )
