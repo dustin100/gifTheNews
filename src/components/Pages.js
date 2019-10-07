@@ -23,6 +23,10 @@ class Pages extends Component {
             <div className='pageNav'>
 
 
+                <button className="PrevButton" onClick={() => {
+
+                }}>Previous </button>
+
                 <button className="nextButton" onClick={() => {
                     this.handleClick();
                     this.props.onNextButtonClick(this.state.nextNewsPage, this.state.nextGifPage);
