@@ -66,7 +66,7 @@ class NewsList extends Component {
                     pageSize: 18,
                     language: 'en',
                     q: this.props.inputValue ? this.props.inputValue : 'breaking news',
-                    page: this.props.newsPage
+                    page: this.props.pageNum
 
                 }
             })
@@ -74,8 +74,7 @@ class NewsList extends Component {
                 params: {
                     api_key: 'fqGHJALbZ8kmKJ6L76bs9FJmTV6GxJ8t',
                     limit: 18,
-                    q: this.props.inputValue ? this.props.inputValue : 'breaking news',
-                    offset: this.props.gifsPage
+                    q: this.props.inputValue ? this.props.inputValue : 'breaking news'
                 }
             })
 
@@ -97,13 +96,13 @@ class NewsList extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.inputValue !== prevProps.inputValue || this.props.newsPage !== prevProps.newsPage || this.props.gifsPage !== prevProps.gifsPage) {
+        if (this.props.inputValue !== prevProps.inputValue || this.props.pageNum !== prevProps.pageNum) {
             this.setState({
                 news: [],
                 gifs: []
             }, this.fetchNews);
         }
-        console.log(this.props.newsPage)
+        console.log(this.props.pageNum)
 
     }
     render() {

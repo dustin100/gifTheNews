@@ -13,8 +13,7 @@ class App extends Component {
     super(props)
     this.state = {
       inputValue: null,
-      newsPage: 1,
-      gifsPage: 0
+      pageNum: 1
 
     }
   }
@@ -24,11 +23,10 @@ class App extends Component {
       inputValue: inputValue
     })
   }
-  onNextButtonClick = (newsPage, gifsPage) => {
+  onNextButtonClick = (pageNum) => {
 
     this.setState({
-      newsPage: newsPage,
-      gifsPage: gifsPage
+      pageNum: pageNum
     })
   }
 
@@ -44,11 +42,10 @@ class App extends Component {
         <SearchBar onSubmittedSearch={this.onSubmittedSearch} />
 
 
-        <NewsList inputValue={this.state.inputValue} newsPage={this.state.newsPage} />
+        <NewsList inputValue={this.state.inputValue} pageNum={this.state.pageNum} />
 
 
         <Pages onNextButtonClick={this.onNextButtonClick} />
-
         <Footer />
 
 
