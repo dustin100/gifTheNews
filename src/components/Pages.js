@@ -5,15 +5,18 @@ class Pages extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            nextPage: 1
+            nextNewsPage: 1,
+            nextGifPage: 0
         }
 
     }
     handleClick = () => {
         this.setState({
-            nextPage: this.state.nextPage += 1
+            nextNewsPage: this.state.nextNewsPage += 1,
+            nextGifPage: this.state.nextGifPage += 18
         })
     }
+
 
     render() {
         return (
@@ -21,8 +24,8 @@ class Pages extends Component {
 
 
                 <button className="nextButton" onClick={() => {
-                    this.handleClick(1)
-                    this.props.onNextButtonClick(this.state.nextPage)
+                    this.handleClick();
+                    this.props.onNextButtonClick(this.state.nextNewsPage, this.state.nextGifPage);
                 }}>Next </button>
 
             </div>
