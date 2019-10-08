@@ -10,7 +10,7 @@ class Pages extends Component {
         }
 
     }
-    handleClick = () => {
+    handleNextClick = () => {
         this.setState({
             nextNewsPage: this.state.nextNewsPage += 1,
             nextGifPage: this.state.nextGifPage += 18
@@ -28,7 +28,7 @@ class Pages extends Component {
                 }}>Previous </button>
 
                 <button className="nextButton" onClick={() => {
-                    this.handleClick();
+                    this.handleNextClick();
                     this.props.onNextButtonClick(this.state.nextNewsPage, this.state.nextGifPage);
                 }}>Next </button>
 
