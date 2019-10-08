@@ -104,8 +104,8 @@ class NewsList extends Component {
             }, this.fetchNews);
         }
         console.log(this.props.newsPageNum)
-
     }
+    
     render() {
         return (
             <section>
