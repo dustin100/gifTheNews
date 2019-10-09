@@ -66,7 +66,7 @@ class NewsList extends Component {
                     pageSize: 18,
                     language: 'en',
                     q: this.props.inputValue ? this.props.inputValue : 'breaking news',
-                    page: this.props.newsPageNum 
+                    page: this.props.newsPageNum
 
                 }
             })
@@ -85,7 +85,7 @@ class NewsList extends Component {
 
 
             })
-            console.log(this.state)
+            
 
 
         } catch (err) {
@@ -103,9 +103,8 @@ class NewsList extends Component {
                 gifs: []
             }, this.fetchNews);
         }
-        console.log(this.props.newsPageNum)
     }
-    
+
     render() {
         return (
             <section>
