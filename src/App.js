@@ -21,16 +21,23 @@ class App extends Component {
   // used to pass props from SearchBar to NewsList
   onSubmittedSearch = (inputValue) => {
     this.setState({
-      inputValue: inputValue
+      inputValue: inputValue,
+      newsPageNum: 1,
+      gifPageNum: 0
     })
   }
-  onNextButtonClick = (newsPageNum, gifPageNum) => {
+  onNextButtonClick = () => {
     this.setState({
-      newsPageNum: newsPageNum,
-      gifPageNum: gifPageNum
+      newsPageNum: this.state.newsPageNum + 1,
+      gifPageNum: this.state.gifPageNum + 18
     })
   }
-
+  onPrevButtonClick = () => {
+    this.setState({
+      newsPageNum: Math.max(this.state.newsPageNum - 1, 1),
+      gifPageNum: Math.max(this.state.gifPageNum - 18, 0)
+    })
+  }
 
 
   render() {
@@ -47,7 +54,7 @@ class App extends Component {
         <NewsList inputValue={this.state.inputValue} newsPageNum={this.state.newsPageNum} gifPageNum={this.state.gifPageNum} />
 
 
-        <Pages onNextButtonClick={this.onNextButtonClick} />
+        <Pages onNextButtonClick={this.onNextButtonClick} onPrevButtonClick={this.onPrevButtonClick} />
         <Footer />
 
 
