@@ -12,19 +12,6 @@ class Pages extends Component {
         }
 
     }
-    // handleNextClick = () => {
-    //     this.setState({
-    //         nextNewsPage: this.state.nextNewsPage + 1,
-    //         nextGifPage: this.state.nextGifPage + 18
-    //     })
-    // }
-
-    // handlePrevClick = () => {
-    //     this.setState({
-    //         prevNewsPage: this.state.prevNewsPage - 1,
-    //         prevGifPage: this.state.prevGifPage - 18
-    //     })
-    // }
 
     render() {
         return (
