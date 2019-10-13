@@ -66,16 +66,16 @@ class NewsList extends Component {
                     pageSize: 18,
                     language: 'en',
                     q: this.props.inputValue ? this.props.inputValue : 'breaking news',
-                    page: this.props.newsPageNum ? this.props.newsPageNum : 1 
+                    page: this.props.newsPageNum ? this.props.newsPageNum : 1
 
                 }
             })
-            const gifData = await axios.get('http://api.giphy.com/v1/gifs/search', {
+            const gifData = await axios.get('https://api.giphy.com/v1/gifs/search', {
                 params: {
                     api_key: 'fqGHJALbZ8kmKJ6L76bs9FJmTV6GxJ8t',
                     limit: 18,
                     q: this.props.inputValue ? this.props.inputValue : 'breaking news',
-                    offset: this.props.gifPageNum ? this.props.gifPageNum: 0
+                    offset: this.props.gifPageNum ? this.props.gifPageNum : 0
                 }
             })
 
@@ -85,7 +85,7 @@ class NewsList extends Component {
 
 
             })
-            
+
 
 
         } catch (err) {
