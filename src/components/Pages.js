@@ -5,12 +5,8 @@ class Pages extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            nextNewsPage: 1,
-            nextGifPage: 0,
-            prevNewsPage: 1,
-            prevGifPage: 0
-        }
 
+        }
     }
 
     render() {
