@@ -3,7 +3,8 @@ import Header from './components/Header.js'
 import SearchBar from './components/SearchBar.js'
 import NewsList from './components/NewsList.js'
 import Footer from './components/Footer.js'
-import 'normalize.css';
+import Pages from './components/Pages.js'
+import 'normalize.css'
 import './App.css'
 import './styles/styles.scss';
 
@@ -11,15 +12,33 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      inputValue: null,
+      newsPageNum: 1,
+      gifPageNum: 0
+
     }
   }
   // used to pass props from SearchBar to NewsList
   onSubmittedSearch = (inputValue) => {
-    console.log(inputValue)
     this.setState({
-      inputValue: inputValue
+      inputValue: inputValue,
+      newsPageNum: 1,
+      gifPageNum: 0
     })
   }
+  onNextButtonClick = () => {
+    this.setState({
+      newsPageNum: this.state.newsPageNum + 1,
+      gifPageNum: this.state.gifPageNum + 18
+    })
+  }
+  onPrevButtonClick = () => {
+    this.setState({
+      newsPageNum: Math.max(this.state.newsPageNum - 1, 1),
+      gifPageNum: Math.max(this.state.gifPageNum - 18, 0)
+    })
+  }
+
 
   render() {
     return (
@@ -31,8 +50,11 @@ class App extends Component {
 
         <SearchBar onSubmittedSearch={this.onSubmittedSearch} />
 
-        <NewsList inputValue={this.state.inputValue} />
 
+        <NewsList inputValue={this.state.inputValue} newsPageNum={this.state.newsPageNum} gifPageNum={this.state.gifPageNum} />
+
+
+        <Pages onNextButtonClick={this.onNextButtonClick} onPrevButtonClick={this.onPrevButtonClick} currentPage={this.state.newsPageNum} />
         <Footer />
 
 
