@@ -169,7 +169,13 @@ button {
         box-shadow: 0 0 40px 40px $color-4 inset;
         outline: 0;
     }
+
+    &:disabled {
+        display:none;
+    }
 }
+
+
 
 .articleSource {
     font-size: 14px;
@@ -195,11 +201,12 @@ footer {
         padding: 3px 0;
     }
 }
+
 .pageNav {
     display: flex;
     justify-content: center;
     margin-bottom: 50px;
-    
+
     button {
         margin: 5px;
     }

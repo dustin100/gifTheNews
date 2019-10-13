@@ -12,7 +12,7 @@ class Pages extends Component {
     render() {
         return (
             <div className='pageNav'>
-                <button disabled={this.props.newsPageNum <= 1} className="PrevButton" onClick={() => {
+                <button disabled={this.props.currentPage <= 1} className="PrevButton" onClick={() => {
                     this.props.onPrevButtonClick()
                 }}>Previous </button>
 

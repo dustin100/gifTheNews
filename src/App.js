@@ -54,7 +54,7 @@ class App extends Component {
         <NewsList inputValue={this.state.inputValue} newsPageNum={this.state.newsPageNum} gifPageNum={this.state.gifPageNum} />
 
 
-        <Pages onNextButtonClick={this.onNextButtonClick} onPrevButtonClick={this.onPrevButtonClick} />
+        <Pages onNextButtonClick={this.onNextButtonClick} onPrevButtonClick={this.onPrevButtonClick} currentPage={this.state.newsPageNum} />
         <Footer />
 
 
