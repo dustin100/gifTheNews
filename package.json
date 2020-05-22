@@ -2,7 +2,7 @@
 	"name": "gif-the-news",
 	"version": "0.1.0",
 	"private": true,
-	"homepage": ".",
+	"homepage": "https://dustin100.github.io/gifTheNews/",
 	"dependencies": {
 		"axios": "^0.19.2",
 		"node-sass": "^4.14.1",
