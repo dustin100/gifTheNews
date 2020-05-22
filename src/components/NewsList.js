@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Qs from 'qs';
 
-axios.defaults.baseURL = 'http://proxy.hackeryou.com';
 
 class NewsList extends Component {
 	constructor(props) {
@@ -54,16 +54,49 @@ class NewsList extends Component {
 
 	async fetchNews() {
 		try {
-			const newsData = await axios.get('https://newsapi.org/v2/everything', {
-				params: {
-					apiKey: '0cc17ab873b944d08f7a6b7c222b403c',
-					sortBy: 'relevancy',
-					pageSize: 18,
-					language: 'en',
-					q: this.props.inputValue ? this.props.inputValue : 'breaking news',
-					page: this.props.newsPageNum ? this.props.newsPageNum : 1,
-				},
-			});
+			// const newsData = await axios.get('https://newsapi.org/v2/everything', {
+			// 	params: {
+					
+			// 		apiKey: '0cc17ab873b944d08f7a6b7c222b403c',
+			// 		sortBy: 'relevancy',
+			// 		pageSize: 18,
+			// 		language: 'en',
+			// 		q: this.props.inputValue ? this.props.inputValue : 'breaking news',
+			// 		page: this.props.newsPageNum ? this.props.newsPageNum : 1,
+			// 	},
+			// });
+
+// had to reconfigure code to use a proxy
+ axios({
+		method: 'GET',
+		url: 'https://proxy.hackeryou.com',
+		responseType: 'json',
+		paramsSerializer: function (params) {
+			return Qs.stringify(params, { arrayFormat: 'brackets' });
+		},
+		params: {
+			reqUrl: 'https://newsapi.org/v2/everything',
+			proxyHeaders: {
+				'Access-Control-Allow-Origin': '*',
+				'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+			},
+			params: {
+				apiKey: '0cc17ab873b944d08f7a6b7c222b403c',
+				sortBy: 'relevancy',
+				pageSize: 18,
+				language: 'en',
+				q: this.props.inputValue ? this.props.inputValue : 'breaking news',
+				page: this.props.newsPageNum ? this.props.newsPageNum : 1,
+			},
+			xmlToJSON: false,
+		},
+ }).then((res) => {
+		this.setState({
+	
+			news: res.data.articles,
+		});
+ });
+        
 
 			const gifData = await axios.get('https://api.giphy.com/v1/gifs/search', {
 				params: {
@@ -75,7 +108,7 @@ class NewsList extends Component {
 			});
 
 			this.setState({
-				news: newsData.data.articles,
+				
 				gifs: gifData.data.data,
 			});
 		} catch (err) {
