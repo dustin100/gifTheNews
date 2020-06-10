@@ -15,7 +15,7 @@ class NewsList extends Component {
 	renderContent() {
 		// const { news, gifs } = this.state; I can use to replace this.state
 		const articleList = this.state.news.map((items, index) => {
-			const gifToUse = this.state.gifs[index];
+			let gifToUse = this.state.gifs[index];
 
 			return (
 				<div key={gifToUse.id} className="boxWarpper">
