@@ -15,11 +15,8 @@ class NewsList extends Component {
 		const articleList = this.state.gifs.map((items, index) => {
 			const newsToUse = this.state.news[index];
 
-			
-
 			return (
 				<div key={items.id} className="boxWarpper">
-					
 					<a href={newsToUse.url} target="_blank" rel="noopener noreferrer">
 						<div className="mainImage">
 							<img src={items.images.original.url} alt={items.title} />
@@ -54,19 +51,6 @@ class NewsList extends Component {
 
 	async fetchNews() {
 		try {
-			// const newsData = await axios.get('https://newsapi.org/v2/everything', {
-			// 	params: {
-
-			// 		apiKey: '0cc17ab873b944d08f7a6b7c222b403c',
-			// 		sortBy: 'relevancy',
-			// 		pageSize: 18,
-			// 		language: 'en',
-			// 		q: this.props.inputValue ? this.props.inputValue : 'breaking news',
-			// 		page: this.props.newsPageNum ? this.props.newsPageNum : 1,
-			// 	},
-			// });
-
-			// had to reconfigure code to use a proxy
 			axios({
 				method: 'GET',
 				url: 'https://proxy.hackeryou.com',
