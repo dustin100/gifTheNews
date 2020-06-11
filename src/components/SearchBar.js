@@ -19,12 +19,11 @@ class SearchBar extends Component {
     }
 
     render() {
-        //{this.props.onSubmittedSearch(this.state.inputValue)} 
         return (
             <section>
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor="searching"></label>
-                    <input type="text" placeholder="Search Something" value={this.state.inputValue} onChange={this.handleChange} />
+                    <input type="text" placeholder="Search Something" value={this.state.inputValue} required onChange={this.handleChange} />
                     <button type="submit">Search </button>
                 </form>
 

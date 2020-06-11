@@ -8,6 +8,8 @@ class NewsList extends Component {
 		this.state = {
 			news: [],
 			gifs: [],
+			loading: true,
+			error: null, 
 		};
 	}
 
@@ -15,11 +17,8 @@ class NewsList extends Component {
 		const articleList = this.state.gifs.map((items, index) => {
 			const newsToUse = this.state.news[index];
 
-			
-
 			return (
 				<div key={items.id} className="boxWarpper">
-					
 					<a href={newsToUse.url} target="_blank" rel="noopener noreferrer">
 						<div className="mainImage">
 							<img src={items.images.original.url} alt={items.title} />
@@ -53,20 +52,8 @@ class NewsList extends Component {
 	}
 
 	async fetchNews() {
+		const {inputValue, newsPageNum, gifPageNum} = this.props;
 		try {
-			// const newsData = await axios.get('https://newsapi.org/v2/everything', {
-			// 	params: {
-
-			// 		apiKey: '0cc17ab873b944d08f7a6b7c222b403c',
-			// 		sortBy: 'relevancy',
-			// 		pageSize: 18,
-			// 		language: 'en',
-			// 		q: this.props.inputValue ? this.props.inputValue : 'breaking news',
-			// 		page: this.props.newsPageNum ? this.props.newsPageNum : 1,
-			// 	},
-			// });
-
-			// had to reconfigure code to use a proxy
 			axios({
 				method: 'GET',
 				url: 'https://proxy.hackeryou.com',
@@ -85,8 +72,8 @@ class NewsList extends Component {
 						sortBy: 'relevancy',
 						pageSize: 18,
 						language: 'en',
-						q: this.props.inputValue ? this.props.inputValue : 'breaking news',
-						page: this.props.newsPageNum ? this.props.newsPageNum : 1,
+						q: inputValue ? inputValue : 'breaking news',
+						page: newsPageNum ? newsPageNum : 1,
 					},
 					xmlToJSON: false,
 				},
@@ -102,8 +89,8 @@ class NewsList extends Component {
 				params: {
 					api_key: 'fqGHJALbZ8kmKJ6L76bs9FJmTV6GxJ8t',
 					limit: 18,
-					q: this.props.inputValue ? this.props.inputValue : 'breaking news',
-					offset: this.props.gifPageNum ? this.props.gifPageNum : 0,
+					q: inputValue ? inputValue : 'breaking news',
+					offset: gifPageNum ? gifPageNum : 0,
 				},
 			}).then((res) => {
 				this.setState({
@@ -112,6 +99,9 @@ class NewsList extends Component {
 			});
 		} catch (err) {
 			console.log(err);
+			this.setState({
+				error:err,
+			})
 		}
 	}
 	componentDidMount() {
@@ -134,9 +124,10 @@ class NewsList extends Component {
 	}
 
 	render() {
+		const {news, gifs} = this.state;
 		return (
 			<section>
-				{this.state.news.length ? this.renderContent() : this.loadingState()}
+				{news.length && gifs.length ? this.renderContent() : this.loadingState()}
 			</section>
 		);
 	}
