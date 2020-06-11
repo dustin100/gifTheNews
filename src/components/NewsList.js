@@ -8,6 +8,8 @@ class NewsList extends Component {
 		this.state = {
 			news: [],
 			gifs: [],
+			loading: true,
+			error: null, 
 		};
 	}
 
@@ -50,6 +52,7 @@ class NewsList extends Component {
 	}
 
 	async fetchNews() {
+		const {inputValue, newsPageNum, gifPageNum} = this.props;
 		try {
 			axios({
 				method: 'GET',
@@ -69,8 +72,8 @@ class NewsList extends Component {
 						sortBy: 'relevancy',
 						pageSize: 18,
 						language: 'en',
-						q: this.props.inputValue ? this.props.inputValue : 'breaking news',
-						page: this.props.newsPageNum ? this.props.newsPageNum : 1,
+						q: inputValue ? inputValue : 'breaking news',
+						page: newsPageNum ? newsPageNum : 1,
 					},
 					xmlToJSON: false,
 				},
@@ -86,8 +89,8 @@ class NewsList extends Component {
 				params: {
 					api_key: 'fqGHJALbZ8kmKJ6L76bs9FJmTV6GxJ8t',
 					limit: 18,
-					q: this.props.inputValue ? this.props.inputValue : 'breaking news',
-					offset: this.props.gifPageNum ? this.props.gifPageNum : 0,
+					q: inputValue ? inputValue : 'breaking news',
+					offset: gifPageNum ? gifPageNum : 0,
 				},
 			}).then((res) => {
 				this.setState({
@@ -96,6 +99,9 @@ class NewsList extends Component {
 			});
 		} catch (err) {
 			console.log(err);
+			this.setState({
+				error:err,
+			})
 		}
 	}
 	componentDidMount() {
@@ -118,9 +124,10 @@ class NewsList extends Component {
 	}
 
 	render() {
+		const {news, gifs} = this.state;
 		return (
 			<section>
-				{this.state.news.length ? this.renderContent() : this.loadingState()}
+				{news.length && gifs.length ? this.renderContent() : this.loadingState()}
 			</section>
 		);
 	}

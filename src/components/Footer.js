@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Footer = (props) => {
+const Footer = () => {
     return (
         <footer>
             <p>Done by Dustin</p>

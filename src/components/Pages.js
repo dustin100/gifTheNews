@@ -1,28 +1,28 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
+const Pages = ({ currentPage, onNextButtonClick, onPrevButtonClick }) => {
+	return (
+		<div className="pageNav">
+			<button
+				disabled={currentPage <= 1}
+				className="PrevButton"
+				onClick={() => {
+					onPrevButtonClick();
+				}}
+			>
+				Previous{' '}
+			</button>
 
-class Pages extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
+			<button
+				className="nextButton"
+				onClick={() => {
+					onNextButtonClick();
+				}}
+			>
+				Next{' '}
+			</button>
+		</div>
+	);
+};
 
-        }
-    }
-
-    render() {
-        return (
-            <div className='pageNav'>
-                <button disabled={this.props.currentPage <= 1} className="PrevButton" onClick={() => {
-                    this.props.onPrevButtonClick()
-                }}>Previous </button>
-
-                <button className="nextButton" onClick={() => {
-                    this.props.onNextButtonClick()
-                }}>Next </button>
-            </div>
-        )
-    }
-
-}
-
-export default Pages
+export default Pages;
