@@ -79,7 +79,7 @@ header {
     text-align: center;
 }
 
-.boxWarpper {
+.boxWrapper {
     width: 350px;
     height: auto;
     margin: 10px;
@@ -214,7 +214,7 @@ footer {
 
 @media only screen and (max-width: 740px) {
 
-    .boxWarpper {
+    .boxWrapper {
         width: 80%;
 
         img {
@@ -227,7 +227,7 @@ footer {
 
 @media only screen and (max-width: 420px) {
 
-    .boxWarpper {
+    .boxWrapper {
         width: 100%;
 
         img {

@@ -16,7 +16,7 @@ class NewsList extends Component {
 			const newsToUse = this.state.news[index];
 
 			return (
-				<div key={items.id} className="boxWarpper">
+				<div key={items.id} className="boxWrapper">
 					<a href={newsToUse.url} target="_blank" rel="noopener noreferrer">
 						<div className="mainImage">
 							<img src={items.images.original.url} alt={items.title} />
