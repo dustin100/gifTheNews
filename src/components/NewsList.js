@@ -8,8 +8,6 @@ class NewsList extends Component {
 		this.state = {
 			news: [],
 			gifs: [],
-			loading: true,
-			error: null, 
 		};
 	}
 
